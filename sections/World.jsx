@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from '../styles';
 import { TitleText, TypingText } from '../components';
 import { fadeIn, staggerContainer } from '../utils/motion';
@@ -13,36 +15,35 @@ const World = () => (
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0.25 }}
-      className={`${styles.innerWidth} mx-auto flex flex-col`}
+      className={`${styles.innerWidth} mx-auto flex flex-col items-center`}
     >
-
-      <TypingText title="| People on the World" textStyles="text-center" />
-      <TitleText
-        title={(
-          <>Track friends around you and invite them to play together in the same
-            world
-          </>
-        )}
+      <TypingText
+        title="CodeRumble Event Photos 2023"
         textStyles="text-center"
       />
+      <TitleText title={<>Event Gallery</>} textStyles="text-center" />
 
       <motion.div
         variants={fadeIn('up', 'tween', 0.3, 1)}
-        className="relative mt-[68px] flex w-full h-[550px]"
+        className="relative mt-[68px] flex w-13/14 md:w-3/5 h-[550px]"
       >
-        <img src="/map.png" alt="map" className="w-full h-full object-cover" />
-
-        <div className="absolute bottom-20 right-20 w-[70px] h-[70px] p-[6px] rounded-full bg-[#5D6680]">
-          <img src="people-01.png" alt="people" className="w-full h-full" />
-        </div>
-
-        <div className="absolute top-10 left-20 w-[70px] h-[70px] p-[6px] rounded-full bg-[#5D6680]">
-          <img src="/people-02.png" alt="people" className="w-full h-full" />
-        </div>
-
-        <div className="absolute top-1/2 left-[45%] w-[70px] h-[70px] p-[6px] rounded-full bg-[#5D6680]">
-          <img src="people-03.png" alt="people" className="w-full h-full" />
-        </div>
+        <Carousel
+          autoPlay
+          emulateTouch
+          infiniteLoop
+          renderThumbs={() => null}
+          renderIndicator={false}
+        >
+          <div>
+            <img src="/eventphotos-3.jpg" className="h-auto" />
+          </div>
+          <div>
+            <img src="/eventphotos-4.jpg" className="h-auto" />
+          </div>
+          <div>
+            <img src="/eventphotos-5.jpg" className="h-auto" />
+          </div>
+        </Carousel>
       </motion.div>
     </motion.div>
   </section>
